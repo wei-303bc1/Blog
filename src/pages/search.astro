@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const searchData = posts.map((post) => ({
+	id: post.id,
+	title: post.data.title,
+	description: post.data.description,
+	tags: post.data.tags ?? [],
+	secret: post.data.secret ?? null,
+}));
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort();
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Search | ${SITE_TITLE}`} description="Search blog posts" />
+		<style>
+			main {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 2em 1em;
+			}
+			.search-box {
+				width: 100%;
+				padding: 0.75rem 1rem;
+				font-size: 1.1rem;
+				border: 1px solid #c9b98c;
+				border-radius: 8px;
+				background: #fdfaf1;
+				color: #3d2f18;
+				margin-bottom: 1.5rem;
+			}
+			.search-box:focus {
+				outline: none;
+				border-color: #8a5a2b;
+			}
+			.tag-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-bottom: 2rem;
+			}
+			.tag-btn {
+				padding: 0.3rem 0.8rem;
+				font-size: 0.85rem;
+				border: 1px solid #c9b98c;
+				border-radius: 999px;
+				background: #f0e6c8;
+				color: #6b4f2a;
+				cursor: pointer;
+				transition: 0.2s ease;
+			}
+			.tag-btn:hover {
+				background: #e0d3a0;
+			}
+			.tag-btn.active {
+				background: #8a5a2b;
+				color: #fff;
+				border-color: #8a5a2b;
+			}
+			ul#results {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul#results li {
+				margin-bottom: 0.5em; /* 這裡去除了數字和em之間的空格 */
+			}
+			ul#results a {
+				text-decoration: none !important;
+			}
+			ul#results a:hover {
+				text-decoration: none !important;
+			}
+			ul#results h4 {
+				margin: 0 0 0.3rem 0;
+				color: #3d2f18;
+			}
+			ul#results p {
+				margin: 0;
+				color: #8a7442;
+				font-size: 0.9rem;
+			}
+			.empty {
+				color: #8a7442;
+				text-align: center;
+				padding: 2rem 0;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Search</h1>
+			<input
+				type="text"
+				id="searchInput"
+				class="search-box"
+				placeholder="Try searching cute furry femboys?"
+			/>
+			<div class="tag-list" id="tagList">
+				{allTags.map((tag) => (
+					<button class="tag-btn" data-tag={tag}>{tag}</button>
+				))}
+			</div>
+			<ul id="results"></ul>
+			<p class="empty" id="emptyMsg" style="display: none;">Error:(</p>
+		</main>
+		<Footer />
+
+		<script define:vars={{ searchData, baseUrl }}>
+			const input = document.getElementById('searchInput');
+			const resultsEl = document.getElementById('results');
+			const emptyMsg = document.getElementById('emptyMsg');
+			const tagButtons = document.querySelectorAll('.tag-btn');
+
+			let activeTag = null;
+
+			function render() {
+				const query = input.value.trim().toLowerCase();
+
+				const filtered = searchData.filter((post) => {
+					if (post.secret) {
+						return query !== '' && query === post.secret.toLowerCase();
+					}
+					const matchesQuery =
+						query === '' ||
+						post.title.toLowerCase().includes(query) ||
+						post.description.toLowerCase().includes(query);
+					const matchesTag = !activeTag || post.tags.includes(activeTag);
+					return matchesQuery && matchesTag;
+				});
+				resultsEl.innerHTML = filtered
+					.map(
+						(post) => `
+						<li>
+							<a href="${baseUrl}blog/${post.id}">
+							<h4>${post.title}</h4>
+							</a>
+						</li>
+					`,
+					)
+					.join('');
+
+				emptyMsg.style.display = filtered.length === 0 ? 'block' : 'none';
+			}
+
+			input.addEventListener('input', render);
+
+			tagButtons.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const tag = btn.dataset.tag;
+					if (activeTag === tag) {
+						activeTag = null;
+						btn.classList.remove('active');
+					} else {
+						tagButtons.forEach((b) => b.classList.remove('active'));
+						activeTag = tag;
+						btn.classList.add('active');
+					}
+					render();
+				});
+			});
+
+			render();
+		</script>
+	</body>
+</html>
