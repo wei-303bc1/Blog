@@ -40,12 +40,12 @@ tags: ["HITCON", "2026", "Conference", "Event", "English"]
 
 #### **Pwn2OwNothing: When a KVM Full-Chain Escapes to Emptiness**: 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is a sad story. Four researcher(`Bruce Chen`, `Peterpan0927`, `Weiming Shi`, `Jheng Bing Jhong`) giving everything they could and made their way to make a KVM full-chain escape chain, but due to  submission limitations they couldn't get the tickets to Pwn2Own Berlin. Life doesn't always go as the way we wanted, but thats just life. You either stay angry and waste your time, or simply accept it and move on.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is a sad story. Four researcher(`Bruce Chen`, `Peterpan0927`, `Weiming Shi`, `Jheng Bing Jhong`) giving everything they could and made their way to make a KVM full-chain escape chain, but due to  some limitations they couldn't get the tickets to Pwn2Own Berlin. Life doesn't always go as the way we wanted, but thats just life. You either stay angry and waste your time, or simply accept it and move on.
 
 
 #### **Vulnerabilities Assembled! The Vulnerability Factory Inside the Windows Kernel**: 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The representer "`Angelboy`" reminds me of a Brawl Stars esport player lol. While i was thinking of this esport player, the agenda was already done. All I could remember is some key worlds like AFD, lego bricks. Using this logic, they made ai to reassemble new bugs and report them like a money printing machine.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The representer is "`Angelboy`". I'm sorry for not paying attention. All I could remember is some key worlds like AFD, lego bricks. Using this logic, they made ai to reassemble new bugs and report them like a money printing machine.
 
 #### **Keychained Melody - Grabbing the Keys to the iCloud Kingdom**: 
 
