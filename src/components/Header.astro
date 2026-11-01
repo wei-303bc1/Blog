@@ -5,7 +5,7 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><HeaderLink href="/blog/home/">{SITE_TITLE}</HeaderLink></h2>
+		<h2><HeaderLink href="/blog/home/" class="prompt" aria-label={SITE_TITLE}>wei_303bc1@blog:~$<span class="cursor" aria-hidden="true"></span></HeaderLink></h2>
 		<div class="internal-links">
 			<HeaderLink href="/blog/home/">Home</HeaderLink>
 			<HeaderLink href="/blog/blog/">Blog</HeaderLink>
@@ -52,6 +52,37 @@ import HeaderLink from './HeaderLink.astro';
 	h2 {
 		margin: 0;
 		font-size: 1em;
+	}
+	h2 :global(a.prompt) {
+		font-weight: 700;
+	}
+	.cursor {
+		display: inline-block;
+		width: 0.6em;
+		height: 1.1em;
+		margin-left: 0.3em;
+		vertical-align: text-bottom;
+		background: currentColor;
+		animation: blink 1s steps(1) infinite;
+	}
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.cursor {
+			animation: none;
+		}
+	}
+	.internal-links :global(a) {
+		text-transform: lowercase;
+	}
+	.internal-links :global(a)::before {
+		content: '[';
+	}
+	.internal-links :global(a)::after {
+		content: ']';
 	}
 	nav {
 		display: flex;

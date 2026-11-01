@@ -10,7 +10,7 @@
 	--gray: 110, 110, 110;
 	--gray-light: 230, 230, 230;
 	--gray-dark: 17, 17, 17;
-	--font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+	--font-mono: var(--font-terminal), ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 }
 body {
 	font-family: var(--font-mono);
@@ -37,6 +37,7 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
+	font-weight: 700;
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
@@ -137,4 +138,16 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Terminal-style heading markers */
+main h1::before,
+main h2::before,
+main h3::before {
+	content: '> ';
+	color: rgb(var(--gray));
+}
+::selection {
+	background: #000;
+	color: #fff;
 }
