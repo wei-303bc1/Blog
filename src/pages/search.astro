@@ -33,17 +33,19 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort
 			}
 			.search-box {
 				width: 100%;
-				padding: 0.75rem 1rem;
-				font-size: 1.1rem;
-				border: 1px solid #c9b98c;
-				border-radius: 8px;
-				background: #fdfaf1;
-				color: #3d2f18;
+				box-sizing: border-box;
+				padding: 0.6rem 0.8rem;
+				font-family: inherit;
+				font-size: 1rem;
+				border: 1px solid #000;
+				border-radius: 0;
+				background: #fff;
+				color: #000;
 				margin-bottom: 1.5rem;
 			}
 			.search-box:focus {
-				outline: none;
-				border-color: #8a5a2b;
+				outline: 2px solid #000;
+				outline-offset: -2px;
 			}
 			.tag-list {
 				display: flex;
@@ -52,22 +54,19 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort
 				margin-bottom: 2rem;
 			}
 			.tag-btn {
-				padding: 0.3rem 0.8rem;
+				padding: 0.2rem 0.6rem;
+				font-family: inherit;
 				font-size: 0.85rem;
-				border: 1px solid #c9b98c;
-				border-radius: 999px;
-				background: #f0e6c8;
-				color: #6b4f2a;
+				border: 1px solid #000;
+				border-radius: 0;
+				background: #fff;
+				color: #000;
 				cursor: pointer;
-				transition: 0.2s ease;
 			}
-			.tag-btn:hover {
-				background: #e0d3a0;
-			}
+			.tag-btn:hover,
 			.tag-btn.active {
-				background: #8a5a2b;
+				background: #000;
 				color: #fff;
-				border-color: #8a5a2b;
 			}
 			ul#results {
 				list-style-type: none;
@@ -75,25 +74,18 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort
 				padding: 0;
 			}
 			ul#results li {
-				margin-bottom: 0.5em; /* 這裡去除了數字和em之間的空格 */
+				margin-bottom: 0.5em;
 			}
 			ul#results a {
-				text-decoration: none !important;
-			}
-			ul#results a:hover {
-				text-decoration: none !important;
+				display: block;
+				text-decoration: none;
 			}
 			ul#results h4 {
-				margin: 0 0 0.3rem 0;
-				color: #3d2f18;
-			}
-			ul#results p {
 				margin: 0;
-				color: #8a7442;
-				font-size: 0.9rem;
+				color: inherit;
 			}
 			.empty {
-				color: #8a7442;
+				color: #6e6e6e;
 				text-align: center;
 				padding: 2rem 0;
 			}

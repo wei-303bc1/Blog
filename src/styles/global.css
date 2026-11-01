@@ -4,27 +4,24 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 :root {
-	--accent: #8a5a2b;
-	--accent-dark: #5c3c1b;
-	--black: 61, 51, 36;
-	--gray: 138, 125, 95;
-	--gray-light: 232, 224, 202;
-	--gray-dark: 61, 51, 36;
-	--gray-gradient: rgba(var(--gray-light), 40%), #f7f2e4;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 15%), 0 8px 24px rgba(var(--gray), 20%),
-		0 16px 32px rgba(var(--gray), 20%);
+	--accent: #000;
+	--accent-dark: #000;
+	--black: 0, 0, 0;
+	--gray: 110, 110, 110;
+	--gray-light: 230, 230, 230;
+	--gray-dark: 17, 17, 17;
+	--font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 }
 body {
-	font-family: var(--font-atkinson);
+	font-family: var(--font-mono);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: #f7f2e4;
+	background: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.7;
 }
 main {
@@ -44,29 +41,33 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 1.8em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.5em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.25em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.1em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 1em;
 }
 strong,
 b {
 	font-weight: 700;
 }
 a {
-	color: var(--accent);
+	color: #000;
+	text-decoration: underline;
+	text-underline-offset: 3px;
 }
 a:hover {
-	color: var(--accent);
+	background: #000;
+	color: #fff;
+	text-decoration: none;
 }
 p {
 	margin-bottom: 1em;
@@ -87,33 +88,33 @@ table {
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
 }
 code {
-	padding: 2px 5px;
+	font-family: var(--font-mono);
+	padding: 1px 4px;
 	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+	padding: 1em;
+	border: 1px solid #000;
+	overflow-x: auto;
 }
 pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
+	border-left: 2px solid #000;
+	padding: 0 0 0 1em;
 	margin: 0;
-	font-size: 1.333em;
+	color: rgb(var(--gray));
 }
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid #000;
 }
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 15px;
 	}
 	main {
 		padding: 1em;

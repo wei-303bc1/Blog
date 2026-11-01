@@ -3,7 +3,6 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; Fun fact: I'm 159 cm tall.
 	<div class="social-links">
 	<!-- Instagram -->
 	<a href="https://instagram.com/wei_303bc1/" target="_blank" aria-label="Instagram">
@@ -31,22 +30,28 @@ const today = new Date();
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
+		padding: 2em 1em 4em 1em;
+		border-top: 1px solid #000;
+		color: #000;
 		text-align: center;
 	}
 	.social-links {
 		display: flex;
 		justify-content: center;
 		gap: 1em;
-		margin-top: 1em;
 	}
 	.social-links a {
+		display: flex;
+		padding: 0.25em;
+		color: #000;
 		text-decoration: none;
-		color: rgb(var(--gray));
 	}
 	.social-links a:hover {
-		color: rgb(var(--gray-dark));
+		background: #000;
+		color: #fff;
+	}
+	.social-links svg {
+		width: 22px;
+		height: 22px;
 	}
 </style>
