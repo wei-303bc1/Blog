@@ -13,6 +13,8 @@ export default defineConfig({
 	redirects: {
 		'/home': '/blog/home/',
 		'/blog': '/blog/blog/',
+		'/about': '/blog/about/',
+		'/search': '/blog/search/',
 	},
 	fonts: [
 		{
