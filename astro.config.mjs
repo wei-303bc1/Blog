@@ -9,6 +9,10 @@ export default defineConfig({
 	site: 'https://wei-303bc1.github.io',
 	base: '/',
 	integrations: [mdx(), sitemap()],
+	// Old URL kept working after moving the home page under /blog/
+	redirects: {
+		'/home': '/blog/home/',
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),
